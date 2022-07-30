@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <div class="container">
+        <section class="pt-5 pb-5">
+        <div class="row w-100">
+          <div class="col-lg-12 col-md-12 col-12">
+            <h3 class="display-5 mb-2 text-center">Product List</h3>
+    <input class="btn btn-primary" type="button" id="allProducts" value="All Product">
+    <!-- <input class="btn primary" type="button" value="Add Product"> -->
+
+<!-- Button modal: Add Product -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
+  Add Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addProduct" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProductLabel">Add Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<form id="addProductForm">
+<!--Product Name-->
+<label for="productName">Product Name:</label><br>
+<input type="text" id="productName" name="productName"><br>
+<br>
+
+<!--Quantity-->
+
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity" name="quantity" min="1" max="100" step="1">
+<br>
+<!--Price-->
+
+<label for="phone">Price:</label>
+<input type="number" id="price" name="price" step="0.01">
+<br>
+
+<!--Product image-->
+<label for="productImage">Choose a product image:</label>
+<input type="file"
+       id="productImage" name="productImage"
+       accept="image/png, image/jpeg">
+
+
+<input type="submit" value="Submit" id="addProductButton"><!--This is submit button to fire up PostMapping-->
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeAdd">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+<!-- Button modal: Edit Product -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProduct">
+  Edit Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editProduct" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <form id="editProductForm">
+
+ <!--Product Id-->
+
+<label for="id">Id:</label>
+<input type="number" id="id" name="id" min="1" step="1">
+<br>
+
+<!--Product Name-->
+<label for="productName">Product Name:</label><br>
+<input type="text" id="productName" name="productName"><br>
+<br>
+
+<!--Quantity-->
+
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity" name="quantity" min="1" max="100" step="1">
+<br>
+<!--Price-->
+
+<label for="phone">Price:</label>
+<input type="number" id="price" name="price" step="0.01">
+<br>
+
+<!--Product image-->
+<label for="productImage">Choose a product image:</label>
+<input type="file"
+       id="productImage" name="productImage"
+       accept="image/png, image/jpeg">
+<br>
+<input type="submit" value="Submit" id="editProductButton"><!--This is submit button to fire up PutMapping-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clodeEdit">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button modal: Delete Product -->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+  Delete Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteProduct" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="deleteProductForm">
+
+ <!--Product Id-->
+
+<label for="id">Id:</label>
+<input type="number" id="id" name="id" min="1" step="1">
+<br>
+
+<input type="submit" value="Submit" id="deleteProductButton"><!--This is submit button to fire up DeleteMapping-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDelete">Close</button> <!--This Button will refresh the page-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <table class="table table-condensed table-responsive">
+
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Product name</th>
+            <!-- <th scope="col">Product Description</th> -->
+            <th scope="col">Image Url</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+            <!-- This is the part that will be updated with a loop
+            every product on the database wll be in a row -->
+         
+        </tbody>
+      </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="js/productList.js"></script>
+
+</div>
+</div>
+</section>
+</div>  
+</body>
+</html>

@@ -1,0 +1,18 @@
+form{
+    display: flexbox;
+    margin: auto;
+    align-items: center;
+    width: 300px;
+    justify-content: center;
+    padding: auto;
+    border-radius: 20px;
+    border: black solid 0.5px;
+    background-color: green;
+    opacity: 0.5;
+}
+
+form *{
+    color: black;
+    font-weight:bolder;
+    margin: 10px;
+}
