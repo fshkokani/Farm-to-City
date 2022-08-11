@@ -25,7 +25,6 @@ if(loadProductsFromLocalStorage() != null){
   <img src="/assets/${element.img.split('\\')[2]}" class="card-img-top" alt="...">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${element.name}</li>
-    <li class="list-group-item">${element.description}:</li>
     <li class="list-group-item">$${element.price} per pound</li>
   </ul>
   <div class="input-group mb-3">
@@ -64,7 +63,6 @@ items.forEach(element => {
   <img src="/assets/${element.imageUrl.split('\\')[2]}" class="card-img-top" alt="...">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${element.name}</li>
-    <li class="list-group-item">${element.description}:</li>
     <li class="list-group-item">$${element.price} per pound</li>
   </ul>
   <div class="input-group mb-3">
